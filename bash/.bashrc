@@ -1,4 +1,4 @@
-export PS1="[\A] \[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;10m\]\h@\u\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;33m\]\w\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\]\\$ \[$(tput sgr0)\]"
+export PS1="[\A] \[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;10m\]\h@\u\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\]:\!:\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;33m\]\w\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\]\\$ \[$(tput sgr0)\]"
 
 http()
 {
