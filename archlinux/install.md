@@ -267,5 +267,7 @@ passwd
 
 Redémarer:
 ```bash
+exit
+umount -R /mnt
 reboot
 ```
