@@ -292,3 +292,8 @@ Installation de xorg et sddm:
 pacman -S xorg sddm plasma-desktop
 ```
 
+Activer le service sddm dés le démarrage:
+```bash
+systemctl enable sddm
+```
+
