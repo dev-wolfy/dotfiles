@@ -289,11 +289,20 @@ passwd pseudo
 
 Installation de xorg et sddm:
 ```bash
-pacman -S xorg sddm plasma-desktop
+pacman -S xorg sddm
 ```
 
 Activer le service sddm dés le démarrage:
 ```bash
 systemctl enable sddm
+```
+
+Installer plasma-desktop pour juste une interface graphique, sinon c'est plasma mais cela rajoute quelques applications de KDE.
+```bash
+pacman -S plasma-desktop
+```
+ou
+```bash
+pacman -S plasma
 ```
 
