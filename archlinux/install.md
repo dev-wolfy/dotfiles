@@ -249,6 +249,13 @@ Génération de l'image via mkinitcpio:
 mkinitcpio -P
 ```
 
+### Installer Grub
+
+Installer grub sinon on pourra jamais booter :p
+```bash
+grub-install --no-floppy --recheck /dev/sda
+```
+
 ### Changer le mot de passe de root
 
 Changer le mot de passe:
