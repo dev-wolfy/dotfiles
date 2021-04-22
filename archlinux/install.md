@@ -260,6 +260,7 @@ mkinitcpio -P
 Installer grub sinon on pourra jamais booter :p
 ```bash
 grub-install --no-floppy --recheck /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ### Changer le mot de passe de root
