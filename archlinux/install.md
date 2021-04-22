@@ -256,3 +256,9 @@ Changer le mot de passe:
 passwd
 ```
 
+### Reboot
+
+Redémarer:
+```bash
+reboot
+```
