@@ -1,5 +1,11 @@
 # Installation de ArchLinux VM VMWare
 
+## Sources
+
+Pour la réalisation de cette doc je me suis inspirée de deux documentation:
+* La première le wiki de arch linux: [https://wiki.archlinux.org/index.php/Installation_guide#Partition_the_disks](https://wiki.archlinux.org/index.php/Installation_guide#Partition_the_disks)
+* La seconde le guide de Frederic Bezies: [https://github.com/FredBezies/arch-tuto-installation/blob/master/install.md](https://github.com/FredBezies/arch-tuto-installation/blob/master/install.md)
+
 ## Partie I
 
 Insérer le fichier ISO dans le lecteur CD de la machine virtuelle. Au premier menu, taper sur **[ENTRER]** pour choisir le premier choix : `Arch Linux install medium (x86_64, BIOS)`. 
