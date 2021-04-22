@@ -160,7 +160,7 @@ mount /dev/sda4 /mnt/home
 ### Installation du système de base
 
 ```bash
-pacstrap /mnt base linux linux-firmware
+pacstrap /mnt base linux linux-firmware base-devel pacman-contrib
 ```
 
 * base apporte les paquets suivant : [base](https://archlinux.org/packages/core/any/base/)
@@ -218,3 +218,41 @@ Puis taper la commande pour générer les traduction:
 ```bash
 locale-gen
 ```
+
+### Réseaux
+
+Installer networkmanager:
+```bash
+pacman -Sy
+pacman -S networkmanager netplan
+systemctl enable NetworkManager
+```
+
+Changer le hostname de la machine:
+```bash
+vim /etc/hostname
+
+archy
+```
+
+Et éditer le fichier /etc/hosts :
+```bash
+127.0.0.1	localhost
+::1		localhost
+127.0.1.1	archy.local	archy
+```
+
+### Génération de l'image du noyau
+
+Génération de l'image via mkinitcpio:
+```bash
+mkinitcpio -P
+```
+
+### Changer le mot de passe de root
+
+Changer le mot de passe:
+```bash
+passwd
+```
+
