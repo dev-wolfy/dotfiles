@@ -34,6 +34,8 @@ timedatectl status
 
 ### Partitionnement des disques
 
+#### Via cfdisk
+
 Lancer l'utilitaire cfdisk :
 ```none
 cfdisk
@@ -56,4 +58,74 @@ Device      Boot  Start  End  Sectors  Size  Id Type
 /dev/sda2                                1G  82 Linux swap / Solaris
 /dev/sda3                               20G  83 Linux
 /dev/sda4                             18.5G  83 Linux
+```
+
+#### Via fdisk
+
+Lancer fdisk :
+```none
+fdisk /dev/sda
+```
+
+Puis réaliser le partitionement comme dans la section précédente :
+```
+Command : o
+Created a new DOS disklabel with disk identifier 0xXXXXXXXX
+
+Command : n
+Partition type
+ p primary (0 primary, 0 extended, 4 free)
+ e extended (container for logical partitions)
+Select (default p): p
+Partition number (1-4, default 1): 1
+First sector (2048-83886076, default 2048): 2048
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-83886079, default 83886079): +512M
+
+Created a new partition 1 of type 'Linux' and of size 512MiB.
+
+Command : a
+Selected partition 1
+The bootable flag on partition 1 is enabled now.
+
+Command : n
+Partition type
+ p primary (1 primary, 0 extended, 3 free)
+ e extended (container for logical partitions)
+Select (default p): p
+Partition number (2-4, default 2): 2
+First sector (1050624-83886076, default 2048):
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (1050624-83886079, default 83886079): +1G
+
+Created a new partition 2 of type 'Linux' and of size 1GiB.
+
+Command : t
+Partition number (1,2, default 2): 2
+Hex code or alias (type L to list all): L
+Hex code or alias (type L to list all): 82
+
+Changed type of partition 'Linux' to 'Linux swap / Solaris'.
+
+Command : n
+Partition type
+ p primary (2 primary, 0 extended, 2 free)
+ e extended (container for logical partitions)
+Select (default p): p
+Partition number (3-4, default 3): 3
+First sector (3147776-83886076, default 3147776):
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (3147776-83886079, default 83886079): +20G
+
+Created a new partition 3 of type 'Linux' and of size 20GiB.
+
+
+Command : n
+Partition type
+ p primary (3 primary, 0 extended, 1 free)
+ e extended (container for logical partitions)
+Select (default p): p
+
+Selected partition 4
+First sector (45090816-83886076, default 45090816):
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (45090816-83886079, default 83886079): [ENTRER]
+
+Created a new partition 4 of type 'Linux' and of size 18.5 GiB.
 ```
