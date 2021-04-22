@@ -136,3 +136,39 @@ Syncing disks.
 root@archiso ~ #
 ```
 
+Formater les partitions suivante en `ext4`:
+```none
+mkfs.ext4 /dev/sda1 
+mkfs.ext4 /dev/sda3
+mkfs.ext4 /dev/sda4
+```
+
+Puis formater et activer le swap:
+```none
+mkswap /dev/sda2
+swapon /dev/sda2
+```
+
+Montage des différentes partitions:
+```none
+mount /dev/sda3 /mnt
+mkdir /mnt/{boot,home}
+mount /dev/sda1 /mnt/boot
+mount /dev/sda4 /mnt/home
+```
+
+### Installation du système de base
+
+```bash
+pacstrap /mnt base linux linux-firmware
+```
+
+* base apporte les paquets suivant : [base](https://archlinux.org/packages/core/any/base/)
+* linux apporte les paquets suivant: [linux](https://archlinux.org/packages/core/x86_64/linux/)
+
+C'est une installation la plus minimaliste donc nous rajouter les paquets qui semble nécessaire. Pour ma part:
+```bash
+pacstrap /mnt vim zip unzip alsa-utils mtools dosfstools lsb-release exfat-utils bash-completion
+```
+VIM par dessus tout !
+
