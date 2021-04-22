@@ -169,6 +169,52 @@ pacstrap /mnt base linux linux-firmware
 C'est une installation la plus minimaliste donc nous rajouter les paquets qui semble nécessaire. Pour ma part:
 ```bash
 pacstrap /mnt vim zip unzip alsa-utils mtools dosfstools lsb-release exfat-utils bash-completion
+pacstrap /mnt man-db man-pages texinfo
+pacstrap /mnt grub os-prober
 ```
-VIM par dessus tout !
+VIM et MAN par dessus tout !
 
+### Configuration du système - fstab
+
+Générer le fichier /etc/fstab en fonction des montages déjà réalisé:
+```bash
+genfstab -U /mnt >> /mnt/etc/fstab
+```
+
+### Chroot
+
+Changer sa racine pour se placer dans le nouveau système:
+```bash
+arch-chroot /mnt
+```
+
+### Localtime
+
+```bash
+ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
+hwclock --systohc
+```
+
+### Localisation
+
+```bash
+vim /etc/locale.gen
+```
+
+Décommenter `fr_FR.UTF-8 UTF-8` et `en_US.UTF-8 UTF-8`.
+
+Editer le fichier `/etc/locale.conf`:
+```none
+LANG=fr_FR.UTF-8
+LC_COLLATE=C
+```
+
+Editer le fichier `/etc/vconsole.conf`:
+```none
+KEYMAP=fr-latin9
+```
+
+Puis taper la commande pour générer les traduction:
+```bash
+locale-gen
+```
