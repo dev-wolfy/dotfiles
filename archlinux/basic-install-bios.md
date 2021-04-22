@@ -278,3 +278,17 @@ exit
 umount -R /mnt
 reboot
 ```
+
+## Partie II - Interface Graphique
+
+Création d'un utilisateur:
+```bash
+useradd -m -c 'Nom complet' -s /bin/bash pseudo
+passwd pseudo
+```
+
+Installation de xorg et sddm:
+```bash
+pacman -S xorg sddm plasma-desktop
+```
+
