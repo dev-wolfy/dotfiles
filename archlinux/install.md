@@ -128,4 +128,11 @@ First sector (45090816-83886076, default 45090816):
 Last sector, +/-sectors or +/-size{K,M,G,T,P} (45090816-83886079, default 83886079): [ENTRER]
 
 Created a new partition 4 of type 'Linux' and of size 18.5 GiB.
+
+Command : w
+The partition table has been altered.
+Syncing disks.
+
+root@archiso ~ #
 ```
+
