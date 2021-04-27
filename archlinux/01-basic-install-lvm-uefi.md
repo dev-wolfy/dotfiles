@@ -89,3 +89,91 @@ lvcreate -L 20G --name ROOT vg-sys
 mkfs -t ext4 -L root /dev/vg-sys/ROOT
 blockdev --getalignoff /dev/nvme0n1
 ```
+
+```
+pvcreate /dev/sda
+vgcreate vg-data /dev/sda
+lvcreate -C y -L 4G --name SWAP vg-data
+lvcreate -L 10G --name HOME vg-data
+
+mkfs.ext4 /dev/vg-data/HOME
+mkswap /dev/vg-data/SWAP
+swapon /dev/vg-data/SWAP
+```
+
+```bash
+mount /dev/vg-sys/ROOT /mnt
+
+mkdir -p /mnt/boot/efi
+mkdir /mnt/home
+
+mount -t vfat /dev/nvme0n1p1 /mnt/boot/efi
+mount /dev/vg-data/HOME /mnt/home
+```
+
+```bash
+pacstrap /mnt base linux linux-firmware base-devel pacman-contrib
+pacstrap /mnt vim zip unzip alsa-utils mtools dosfstools lsb-release exfat-utils bash-completion
+pacstrap /mnt man-db man-pages texinfo
+pacstrap /mnt grub os-prober efibootmgr
+pacstrap /mnt lvm2
+pacstrap /mnt dhclient dhcpd networkmanager iptables
+```
+
+```bash
+genfstab -U -p /mnt >> /mnt/etc/fstab
+```
+
+```bash
+arch-chroot /mnt
+```
+
+```bash
+systemctl enable NetworkManager
+```
+
+```bash
+ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
+```
+
+```bash
+hwclock --systohc
+```
+
+```bash
+vim /etc/locale.gen
+```
+Décommenter fr_FR.UTF-8 et en_EN.UTF-8
+
+```bash
+vim /etc/locale.conf
+LANG=fr_FR.UTF-8
+LC_LOCATE=C
+```
+
+```bash
+vim /etc/vconsole.conf
+KEYMAP=fr_latin9
+```
+
+```bash
+locale-gen
+```
+
+```bash
+vim /etc/mkinitcpio.conf
+MODULES=(nvme)
+HOOKS=(base udev autodetect modconf block lvm2 filesystems keyboard fsck)
+```
+
+```bash
+mkinitcpio -P
+```
+
+```bash
+mount | grep efivars &> /dev/null || mount -t efivarfs efivarfs /sys/firmware/efi/efivars
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub --recheck
+```
+
+```bash
+grub-mkconfig -o /boot/grub/grub.cfg
