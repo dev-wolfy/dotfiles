@@ -306,3 +306,9 @@ ou
 pacman -S plasma
 ```
 
+```bash
+pacman -S nvidia
+```
+
+```bash
+pacman -s htop 
