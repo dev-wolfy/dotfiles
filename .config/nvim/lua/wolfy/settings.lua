@@ -11,6 +11,8 @@ opt.cursorline = true
 
 opt.mouse = "v"
 
+--vim.o.showtabline = 2
+
+-- nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-

@@ -27,7 +27,7 @@ db.custom_center = {
 	{
 		icon = ' ',
 		desc = 'New file                        ',
-		shortcut = 'e', action = ':ene <BAR> startinsert <CR>',
+		shortcut = 'e', action = ':e filename <CR>',
 		icon_hl = { fg = "#49bb4b" }
 	},
 	{
